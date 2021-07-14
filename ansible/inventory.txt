@@ -1,0 +1,18 @@
+[MANAGE_NODE1]
+node1   ansible_host=172.16.238.10  
+
+[MANAGE_NODE2]
+node2   ansible_host=172.16.238.11   
+
+[MANAGE_NODE3]
+node3   ansible_host=172.16.238.12   
+
+[TWO_NODE:children]
+MANAGE_NODE1
+MANAGE_NODE2
+
+[MANAGE_NODES:children]
+MANAGE_NODE1   
+MANAGE_NODE2   
+MANAGE_NODE3  
+

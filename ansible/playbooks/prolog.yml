@@ -1,0 +1,15 @@
+---
+- name: Playbook prologe  
+  hosts: all 
+  become: yes 
+
+  tasks:
+    - name: Download foo.conf
+      get_url:
+        url: https://yandex.ru/
+        dest: /home/foo.conf
+        mode: '0440'
+
+
+# ansible all -m get_url -a "url=https://yandex.ru/ dest=/home/foo.conf mode=0440"
+# результат будет точно такой же

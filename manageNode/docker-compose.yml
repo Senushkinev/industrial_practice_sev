@@ -1,0 +1,31 @@
+version: "3"
+
+services: 
+  managenode1:
+    container_name: mgnd1 
+    build: .
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.10
+
+  managenode2:
+    container_name: mgnd2
+    build: .
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.11
+      
+  managenode3:
+    container_name: mgnd3 
+    build: .
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.12
+
+
+networks:
+  app_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.238.0/24"
