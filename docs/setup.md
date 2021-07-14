@@ -22,9 +22,10 @@ sudo apt install ansible
 ```
 ssh-keygen
 ```
-После этого нужно скопировать в папку key открытый ключи и переименовать его в **authorized_keys**
+После этого нужно создать папку key и скопировать в нее открытый ключи и переименовать его в **authorized_keys**
 ```
- cp ~/.ssh/id_rsa.pub <путь до cклонированного репозитория>/ip_sev/manageNode/ key/authorized_keys
+ mkdir ./manageNode/key
+ cp ~/.ssh/id_rsa.pub <путь до cклонированного репозитория>/manageNode/key/authorized_keys
 ```
 Теперь во время сборки образа открытый ключ будет скопирован в контейнер.
 
@@ -36,7 +37,7 @@ ssh-keygen
 ```
 Теперь можно запустить созданные контейнеры:
 ```
- docker-compose up -d.
+ docker-compose up -d
 ```
 Флаг -d позволяет запустить контейнеры в фоне.
 
@@ -84,10 +85,6 @@ ok: [node3]
  docker-compose stop
  docker-compose rm
 ``` 
-Чтобы увеличить количество виртуальных docker-машин нужно редактировать файл manageNode/docker-compose.yml 
-
-После добавления новой машин в docker-compose.yml нужно добавить ее в ansible/inventory.txt 
-
 ---
 Если вдруг понадобилось авторизовываться с помощью пароля нужно добавить в Dockerfile:
 ```Dockerfile
